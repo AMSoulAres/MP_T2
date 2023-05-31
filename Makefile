@@ -1,6 +1,11 @@
 all: testa_rainhas.cpp   rainhas.cpp rainhas.hpp rainhas.o
-	g++ -std=c++11 -Wall rainhas.o testa_rainhas.cpp -o testa_rainhas
+	cpplint --linelength=120 rainhas.cpp
+	cpplint --linelength=120 testa_rainhas.cpp
+	g++ -std=c++11 -Wall -fprofile-arcs -ftest-coverage -g rainhas.o testa_rainhas.cpp -o testa_rainhas
+	cppcheck --enable=warning .
 	./testa_rainhas
+	gcov *.cpp
+	valgrind --leak-check=yes --log-file=valgrind.rpt ./testa_rainhas
 
 compile: testa_rainhas.cpp   rainhas.cpp rainhas.hpp rainhas.o
 	g++ -std=c++11 -Wall rainhas.o testa_rainhas.cpp -o testa_rainhas
