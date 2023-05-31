@@ -2,6 +2,6 @@
 #include "./catch.hpp"
 #include "./rainhas.hpp"
 
-TEST_CASE("Numeros romanos - algarismos únicos", "[rainhas]"){
+TEST_CASE("Teste leitura de arquivo", "[rainhas]"){
     REQUIRE(checa_rainha() == 1);
 }
