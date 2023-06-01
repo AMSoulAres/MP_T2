@@ -11,3 +11,7 @@ TEST_CASE("Teste leitura de arquivo", "[rainhas]") {
 TEST_CASE("Teste erro leitura", "[rainhas]") {
     REQUIRE(checa_rainha("any.txt") == -1);
 }
+
+TEST_CASE("Teste verifica 8 caracteres na linha", "[rainhas]") {
+    REQUIRE(checa_rainha("erro8caracteres.txt") == -1);
+}

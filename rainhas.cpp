@@ -19,8 +19,16 @@ int checa_rainha(std:: string nomeDoArquivo) {
         // read data from file object
         // and put it into string.
         while (getline(myfile, str)) {
-            g1.push_back(str);
-            fullLine.append(str);
+            int countLines;
+
+            if(str.length() == 8 && countLines < 8){
+                countLines++;
+                g1.push_back(str);
+                fullLine.append(str);
+            }
+            else {
+                return -1;
+            }
         }
         // close the file object.
         myfile.close();
