@@ -17,5 +17,5 @@ TEST_CASE("Teste verifica 8 caracteres na linha", "[rainhas]") {
 }
 
 TEST_CASE("Teste verifica 8 linhas", "[rainhas]") {
-    REQUIRE(checa_rainha("erro8caracteres.txt") == -1);
+    REQUIRE(checa_rainha("erro8linhas.txt") == -1);
 }
