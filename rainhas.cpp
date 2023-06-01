@@ -13,26 +13,19 @@ int checa_rainha(std:: string nomeDoArquivo) {
     std::string fullLine;
 
     if (myfile.is_open()) {
-        // checking if the file is open
         std::string str;
+        int countLines = 0;
 
-        // read data from file object
-        // and put it into string.
         while (getline(myfile, str)) {
-            int countLines;
-
-            if(str.length() == 8 && countLines < 8){
+            if (str.length() == 8 && countLines < 8) {
                 countLines++;
                 g1.push_back(str);
                 fullLine.append(str);
-            }
-            else {
+            } else {
                 return -1;
             }
         }
-        // close the file object.
         myfile.close();
-
     }
     std::cout << "\nVector elements are: " << std::endl;
     for (unsigned int i = 0; i < g1.size(); i++) {
@@ -45,14 +38,5 @@ int checa_rainha(std:: string nomeDoArquivo) {
     return -1;
 }
 // int main() {
-
-//     std::ifstream file("teste_8_rainhas.txt");
-//     if (file.is_open()) {
-//         std::string line;
-//         while (std::getline(file, line)) {
-//             // using printf() in all tests for consistency
-//             printf("%s\n", line.c_str());
-//         }
-//     file.close();
-//     }
+//     checa_rainha("teste_8_rainhas.txt");
 // }
