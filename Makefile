@@ -1,5 +1,5 @@
 all: testa_rainhas.cpp   rainhas.cpp rainhas.hpp rainhas.o
-	cpplint --linelength=120 rainhas.cpp
+	cpplint --linelength=120 --filter=-build/include rainhas.cpp
 	cpplint --linelength=120 testa_rainhas.cpp
 	g++ -std=c++11 -Wall -fprofile-arcs -ftest-coverage -g rainhas.o testa_rainhas.cpp -o testa_rainhas
 	cppcheck --enable=warning .

@@ -1,1 +1,1 @@
-int checa_rainha();
+int checa_rainha(std:: string nomeDoArquivo);
