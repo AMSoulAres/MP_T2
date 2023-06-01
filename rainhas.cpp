@@ -7,16 +7,15 @@
 
 int checa_rainha(std:: string nomeDoArquivo) {
     std::fstream myfile;
- 
     // open file
-    myfile.open("teste_8_rainhas.txt");
+    myfile.open(nomeDoArquivo);
     std::vector<std::string> g1;
     std::string fullLine;
- 
+
     if (myfile.is_open()) {
         // checking if the file is open
         std::string str;
- 
+
         // read data from file object
         // and put it into string.
         while (getline(myfile, str)) {
@@ -25,15 +24,16 @@ int checa_rainha(std:: string nomeDoArquivo) {
         }
         // close the file object.
         myfile.close();
+
     }
     std::cout << "\nVector elements are: " << std::endl;
     for (unsigned int i = 0; i < g1.size(); i++) {
         std::cout << g1[i] << std::endl;
     }
-
     if (fullLine == "0000010001000000000100000000001000100000000000010000100010000000") {
         return 0;
     }
+
     return -1;
 }
 // int main() {
