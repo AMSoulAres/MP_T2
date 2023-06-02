@@ -25,10 +25,10 @@ std::string readFile(std::string filename){
             }
         }
         myfile.close();
+        return fullLine;
     }
-    return fullLine;
+    return "Erro";
 }
-
 
 int checa_rainha(std:: string nomeDoArquivo) {
     std::vector<std::vector<int>> tabuleiro;
