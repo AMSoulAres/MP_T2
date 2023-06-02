@@ -74,6 +74,6 @@ int checa_rainha(std:: string nomeDoArquivo) {
     return -1;
 }
 
-int main() {
-    checa_rainha("teste_8_rainhas.txt");
-}
+// int main() {
+//     checa_rainha("teste_8_rainhas.txt");
+// }
