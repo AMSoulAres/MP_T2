@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <sstream>
 
 std::string readFile(std::string filename){
     std::fstream myfile;
@@ -28,6 +29,29 @@ std::string readFile(std::string filename){
         return fullLine;
     }
     return "Erro";
+}
+
+std::string checa_ataque(std::vector<std::vector<int>> tabuleiro) {
+    for (int linha1 = 0; linha1 < 8; linha1++) {
+        for (int coluna1 = 0; coluna1 < 8; coluna1++) {
+            if (tabuleiro[linha1][coluna1] == 1){
+                for (int coluna2 = 0; coluna2 < 8; coluna2++) {
+                    if(tabuleiro[linha1][coluna2] == 1 && coluna1 != coluna2){
+                        std::string s1("(");
+                        std::string s2(")");
+                        std::string s3(",");
+                        std::stringstream ss;
+                        ss << s1 << linha1 + '0' << s3 << coluna1 + '0' << s2 << s3 << s1 << linha1 + '0' << s3 << coluna2 + '0'<< s2;
+                        std::string resposta = ss.str();
+                        return resposta;
+                    }
+                }
+                
+                
+            }
+        }
+    }
+    return "sucesso";
 }
 
 int checa_rainha(std:: string nomeDoArquivo) {
@@ -67,13 +91,19 @@ int checa_rainha(std:: string nomeDoArquivo) {
                 std::cout << line << std::endl;
             }
     }}
-    if (conteudo == "0000010001000000000100000000001000100000000000010000100010000000") {
+
+    std::string request = checa_ataque(tabuleiro);
+
+    if (request == "sucesso") {
+        return 1;
+    } else {
+        std::cout << request << std::endl;
         return 0;
     }
 
     return -1;
 }
 
-// int main() {
-//     checa_rainha("teste_8_rainhas.txt");
-// }
+int main() {
+    checa_rainha("teste_8_rainhas.txt");
+}

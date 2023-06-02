@@ -5,7 +5,7 @@
 #include "./rainhas.hpp"
 
 TEST_CASE("Teste leitura de arquivo", "[rainhas]") {
-    REQUIRE(checa_rainha("teste_8_rainhas.txt") == 0);
+    REQUIRE(checa_rainha("teste_8_rainhas.txt") == 1);
 }
 
 TEST_CASE("Teste erro leitura", "[rainhas]") {
@@ -22,4 +22,8 @@ TEST_CASE("Teste verifica 8 linhas", "[rainhas]") {
 
 TEST_CASE("Teste verifica se ocorre ataque na linha (Sucesso)", "[rainhas]") {
     REQUIRE(checa_rainha("teste_8_rainhas.txt") == 1);
+}
+
+TEST_CASE("Teste verifica se ocorre ataque na linha (Falha)", "[rainhas]") {
+    REQUIRE(checa_rainha("teste_8_rainhas.txt") == 0);
 }
