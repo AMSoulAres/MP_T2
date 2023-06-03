@@ -59,7 +59,35 @@ std::string checa_ataque(std::vector<std::vector<int>> tabuleiro) {
                         return resposta;
                     }
                 }
-
+                //Verifica ataque na diagonal principal
+                //abaixo
+                for (int linha2 = linha1; linha2 < 8; linha2++) {
+                    for (int coluna2 = coluna1; coluna2 < 8; coluna2++) {
+                        if (tabuleiro[linha2][coluna2] == 1 && linha1 != linha2 && coluna1 != coluna2 ) {
+                            std::string s1("(");
+                            std::string s2(")");
+                            std::string s3(",");
+                            std::stringstream ss;
+                            ss << s1 << linha1 << s3 << coluna1 << s2 << s3 << s1 << linha2 << s3 << coluna2 << s2;
+                            std::string resposta = ss.str();
+                            return resposta;
+                        }
+                    }
+                }
+                //acima
+                 for (int linha2 = linha1; linha2 < 8; linha2--) {
+                    for (int coluna2 = coluna1; coluna2 < 8; coluna2--) {
+                        if (tabuleiro[linha2][coluna2] == 1 && linha1 != linha2 && coluna1 != coluna2 ) {
+                            std::string s1("(");
+                            std::string s2(")");
+                            std::string s3(",");
+                            std::stringstream ss;
+                            ss << s1 << linha1 << s3 << coluna1 << s2 << s3 << s1 << linha2 << s3 << coluna2 << s2;
+                            std::string resposta = ss.str();
+                            return resposta;
+                        }
+                    }
+                }
 
                 
                 
@@ -122,6 +150,6 @@ int checa_rainha(std:: string nomeDoArquivo) {
 // int main() {
 //     checa_rainha("teste_8_rainhas.txt");
 // }
-// int main() {
-//     checa_rainha("errocoluna.txt");
-// }
+int main() {
+    checa_rainha("errocoluna.txt");
+}
