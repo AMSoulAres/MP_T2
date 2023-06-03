@@ -33,5 +33,5 @@ TEST_CASE("Teste verifica se ocorre ataque na diagonal principal (Falha)", "[rai
 }
 
 TEST_CASE("Teste verifica se ocorre ataque na diagonal secundária (Falha)", "[rainhas]") {
-    REQUIRE(checa_rainha("erroDiagonalPrincipal.txt") == 0);
+    REQUIRE(checa_rainha("erroDiagonalSecundaria.txt") == 0);
 }
