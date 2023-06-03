@@ -20,6 +20,10 @@ TEST_CASE("Teste verifica 8 linhas", "[rainhas]") {
     REQUIRE(checa_rainha("erro8linhas.txt") == -1);
 }
 
+TEST_CASE("Teste verifica caracteres válidos", "[rainhas]") {
+    REQUIRE(checa_rainha("erroCaractere.txt") == -1);
+}
+
 TEST_CASE("Teste verifica se ocorre ataque na linha (Falha)", "[rainhas]") {
     REQUIRE(checa_rainha("erroLinha.txt") == 0);
 }

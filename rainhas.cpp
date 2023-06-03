@@ -185,6 +185,10 @@ int checa_rainha(std:: string nomeDoArquivo) {
         for (int j = 0; j < 8; j++) {
             char itemConteudo = conteudo.at(countChar);
             char item = itemConteudo - '0';
+
+            if (item != 1 && item != 0) {
+                return -1;
+            }
             linha.push_back(item);
             countChar++;
         }
