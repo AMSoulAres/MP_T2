@@ -35,6 +35,7 @@ std::string checa_ataque(std::vector<std::vector<int>> tabuleiro) {
     for (int linha1 = 0; linha1 < 8; linha1++) {
         for (int coluna1 = 0; coluna1 < 8; coluna1++) {
             if (tabuleiro[linha1][coluna1] == 1){
+                //Verifica ataque na linha
                 for (int coluna2 = 0; coluna2 < 8; coluna2++) {
                     if(tabuleiro[linha1][coluna2] == 1 && coluna1 != coluna2){
                         std::string s1("(");
@@ -46,6 +47,20 @@ std::string checa_ataque(std::vector<std::vector<int>> tabuleiro) {
                         return resposta;
                     }
                 }
+                //Verifica ataque na coluna
+                for (int linha2 = 0; linha2 < 8; linha2++) {
+                    if (tabuleiro[linha2][coluna1] == 1 && linha1 != linha2){
+                        std::string s1("(");
+                        std::string s2(")");
+                        std::string s3(",");
+                        std::stringstream ss;
+                        ss << s1 << linha1 << s3 << coluna1 << s2 << s3 << s1 << linha2 << s3 << coluna1 << s2;
+                        std::string resposta = ss.str();
+                        return resposta;
+                    }
+                }
+
+
                 
                 
             }
@@ -108,5 +123,5 @@ int checa_rainha(std:: string nomeDoArquivo) {
 //     checa_rainha("teste_8_rainhas.txt");
 // }
 // int main() {
-//     checa_rainha("errolinha.txt");
+//     checa_rainha("errocoluna.txt");
 // }
