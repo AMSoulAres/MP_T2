@@ -35,3 +35,11 @@ TEST_CASE("Teste verifica se ocorre ataque na coluna (Sucesso)", "[rainhas]") {
 TEST_CASE("Teste verifica se ocorre ataque na coluna (Falha)", "[rainhas]") {
     REQUIRE(checa_rainha("errocoluna.txt") == 0);
 }
+
+TEST_CASE("Teste verifica se ocorre ataque na diagonal principal (Sucesso)", "[rainhas]") {
+    REQUIRE(checa_rainha("teste_8_rainhas.txt") == 1);
+}
+
+TEST_CASE("Teste verifica se ocorre ataque na diagonal principal (Falha)", "[rainhas]") {
+    REQUIRE(checa_rainha("erroDiagonalPrincipal.txt") == 0);
+}
