@@ -25,5 +25,5 @@ TEST_CASE("Teste verifica se ocorre ataque na linha (Sucesso)", "[rainhas]") {
 }
 
 TEST_CASE("Teste verifica se ocorre ataque na linha (Falha)", "[rainhas]") {
-    REQUIRE(checa_rainha("teste_8_rainhas.txt") == 0);
+    REQUIRE(checa_rainha("errolinha.txt") == 0);
 }

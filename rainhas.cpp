@@ -41,7 +41,7 @@ std::string checa_ataque(std::vector<std::vector<int>> tabuleiro) {
                         std::string s2(")");
                         std::string s3(",");
                         std::stringstream ss;
-                        ss << s1 << linha1 + '0' << s3 << coluna1 + '0' << s2 << s3 << s1 << linha1 + '0' << s3 << coluna2 + '0'<< s2;
+                        ss << s1 << linha1 << s3 << coluna1 << s2 << s3 << s1 << linha1 << s3 << coluna2 << s2;
                         std::string resposta = ss.str();
                         return resposta;
                     }
@@ -104,6 +104,9 @@ int checa_rainha(std:: string nomeDoArquivo) {
     return -1;
 }
 
-int main() {
-    checa_rainha("teste_8_rainhas.txt");
-}
+// int main() {
+//     checa_rainha("teste_8_rainhas.txt");
+// }
+// int main() {
+//     checa_rainha("errolinha.txt");
+// }
