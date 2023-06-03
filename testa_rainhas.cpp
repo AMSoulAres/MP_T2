@@ -21,11 +21,11 @@ TEST_CASE("Teste verifica 8 linhas", "[rainhas]") {
 }
 
 TEST_CASE("Teste verifica se ocorre ataque na linha (Falha)", "[rainhas]") {
-    REQUIRE(checa_rainha("errolinha.txt") == 0);
+    REQUIRE(checa_rainha("erroLinha.txt") == 0);
 }
 
 TEST_CASE("Teste verifica se ocorre ataque na coluna (Falha)", "[rainhas]") {
-    REQUIRE(checa_rainha("errocoluna.txt") == 0);
+    REQUIRE(checa_rainha("erroColuna.txt") == 0);
 }
 
 TEST_CASE("Teste verifica se ocorre ataque na diagonal principal (Falha)", "[rainhas]") {

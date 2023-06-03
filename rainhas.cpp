@@ -18,8 +18,14 @@ std::string readFile(std::string filename) {
         int countLines = 0;
 
         while (getline(myfile, str)) {
+            // O windows não lê a quebra de linha, mas o linux sim.
+            // Portanto faço essa dupla verificação.
             if (str.length() == 8 && countLines < 8) {
                 countLines++;
+                fullLine.append(str);
+            } else if (str.length() == 9) {
+                countLines++;
+                str.erase(8, 1);
                 fullLine.append(str);
             } else {
                 return "Erro";
@@ -60,10 +66,10 @@ std::string checa_ataque(std::vector<std::vector<int>> tabuleiro) {
                     }
                 }
                 // Verifica ataque na diagonal principal
-                // acima
+                // abaixo
                 int coluna2 = coluna1;
                 for (int linha2 = linha1; linha2 < 8; linha2++) {
-                    if (tabuleiro[linha2][coluna2] == 1 && linha2 != linha2 && coluna2 != coluna2 && coluna2 < 8) {
+                    if (tabuleiro[linha2][coluna2] == 1 && linha1 != linha2 && coluna1 != coluna2 && coluna2 < 8) {
                         std::string s1("(");
                         std::string s2(")");
                         std::string s3(",");
@@ -74,18 +80,54 @@ std::string checa_ataque(std::vector<std::vector<int>> tabuleiro) {
                     }
                     coluna2++;
                 }
+
+                // acima
+                coluna2 = coluna1;
+                for (int linha2 = linha1; linha2 >= 0; linha2--) {
+                    if (tabuleiro[linha2][coluna2] == 1 && linha1 != linha2 && coluna1 != coluna2 && coluna2 < 8) {
+                        std::string s1("(");
+                        std::string s2(")");
+                        std::string s3(",");
+                        std::stringstream ss;
+                        ss << s1 << linha1 << s3 << coluna1 << s2 << s3 << s1 << linha2 << s3 << coluna2 << s2;
+                        std::string resposta = ss.str();
+                        return resposta;
+                    }
+                    coluna2--;
+                }
+                // Não tenho certeza se a verificação acima é necessária
+
+                // Verfica diagonal secundária
                 // abaixo
-                // for (int linha2 = linha1, int coluna2 = coluna1; linha2 < 8 && coluna2 < 8; linha2++, coluna2++) {
-                //     if (tabuleiro[linha2][coluna2] == 1 && linha2 != linha2 && coluna2 != coluna2 ) {
-                //         std::string s1("(");
-                //         std::string s2(")");
-                //         std::string s3(",");
-                //         std::stringstream ss;
-                //         ss << s1 << linha1 << s3 << coluna1 << s2 << s3 << s1 << linha2 << s3 << coluna2 << s2;
-                //         std::string resposta = ss.str();
-                //         return resposta;
-                //     }
-                // }
+                coluna2 = coluna1;
+                for (int linha2 = linha1; linha2 < 8; linha2++) {
+                    if (tabuleiro[linha2][coluna2] == 1 && linha1 != linha2 && coluna1 != coluna2 && coluna2 >= 0) {
+                        std::string s1("(");
+                        std::string s2(")");
+                        std::string s3(",");
+                        std::stringstream ss;
+                        ss << s1 << linha1 << s3 << coluna1 << s2 << s3 << s1 << linha2 << s3 << coluna2 << s2;
+                        std::string resposta = ss.str();
+                        return resposta;
+                    }
+                    coluna2--;
+                }
+
+                // acima
+                coluna2 = coluna1;
+                for (int linha2 = linha1; linha2 >= 8; linha2--) {
+                    if (tabuleiro[linha2][coluna2] == 1 && linha1 != linha2 && coluna1 != coluna2 && coluna2 >= 0) {
+                        std::string s1("(");
+                        std::string s2(")");
+                        std::string s3(",");
+                        std::stringstream ss;
+                        ss << s1 << linha1 << s3 << coluna1 << s2 << s3 << s1 << linha2 << s3 << coluna2 << s2;
+                        std::string resposta = ss.str();
+                        return resposta;
+                    }
+                    coluna2++;
+                }
+                // Não tenho certeza se a verificação acima é necessária
             }
         }
     }
@@ -144,5 +186,14 @@ int checa_rainha(std:: string nomeDoArquivo) {
 //     checa_rainha("teste_8_rainhas.txt");
 // }
 // int main() {
-//     checa_rainha("errocoluna.txt");
+//     checa_rainha("erroLinha.txt");
+// }
+// int main() {
+//     checa_rainha("errocColuna.txt");
+// }
+// int main() {
+//     checa_rainha("erroDiagonalPrincipal.txt");
+// }
+// int main() {
+//     checa_rainha("erroDiagonalSecundaria.txt");
 // }

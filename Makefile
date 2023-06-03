@@ -7,6 +7,14 @@ all: testa_rainhas.cpp   rainhas.cpp rainhas.hpp rainhas.o
 	gcov *.cpp
 	valgrind --leak-check=yes --log-file=valgrind.rpt ./testa_rainhas
 
+windows: testa_rainhas.cpp   rainhas.cpp rainhas.hpp rainhas.o
+	cpplint --linelength=120 --exclude=catch.hpp --filter=-build/include rainhas.cpp
+	cpplint --linelength=120 --exclude=catch.hpp testa_rainhas.cpp
+	g++ -std=c++11 -Wall -fprofile-arcs -ftest-coverage -g rainhas.o testa_rainhas.cpp -o testa_rainhas
+	cppcheck --enable=warning --config-excludes-file=catch.hpp .
+	./testa_rainhas
+	gcov *.cpp
+
 compile: testa_rainhas.cpp   rainhas.cpp rainhas.hpp rainhas.o
 	g++ -std=c++11 -Wall rainhas.o testa_rainhas.cpp -o testa_rainhas
 	
