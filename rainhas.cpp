@@ -6,7 +6,7 @@
 #include <vector>
 #include <sstream>
 
-std::string readFile(std::string filename){
+std::string readFile(std::string filename) {
     std::fstream myfile;
     // open file
     myfile.open(filename);
@@ -34,10 +34,10 @@ std::string readFile(std::string filename){
 std::string checa_ataque(std::vector<std::vector<int>> tabuleiro) {
     for (int linha1 = 0; linha1 < 8; linha1++) {
         for (int coluna1 = 0; coluna1 < 8; coluna1++) {
-            if (tabuleiro[linha1][coluna1] == 1){
-                //Verifica ataque na linha
+            if (tabuleiro[linha1][coluna1] == 1) {
+                // Verifica ataque na linha
                 for (int coluna2 = 0; coluna2 < 8; coluna2++) {
-                    if(tabuleiro[linha1][coluna2] == 1 && coluna1 != coluna2){
+                    if (tabuleiro[linha1][coluna2] == 1 && coluna1 != coluna2) {
                         std::string s1("(");
                         std::string s2(")");
                         std::string s3(",");
@@ -47,9 +47,9 @@ std::string checa_ataque(std::vector<std::vector<int>> tabuleiro) {
                         return resposta;
                     }
                 }
-                //Verifica ataque na coluna
+                // Verifica ataque na coluna
                 for (int linha2 = 0; linha2 < 8; linha2++) {
-                    if (tabuleiro[linha2][coluna1] == 1 && linha1 != linha2){
+                    if (tabuleiro[linha2][coluna1] == 1 && linha1 != linha2) {
                         std::string s1("(");
                         std::string s2(")");
                         std::string s3(",");
@@ -59,38 +59,33 @@ std::string checa_ataque(std::vector<std::vector<int>> tabuleiro) {
                         return resposta;
                     }
                 }
-                //Verifica ataque na diagonal principal
-                //abaixo
+                // Verifica ataque na diagonal principal
+                // acima
+                int coluna2 = coluna1;
                 for (int linha2 = linha1; linha2 < 8; linha2++) {
-                    for (int coluna2 = coluna1; coluna2 < 8; coluna2++) {
-                        if (tabuleiro[linha2][coluna2] == 1 && linha1 != linha2 && coluna1 != coluna2 ) {
-                            std::string s1("(");
-                            std::string s2(")");
-                            std::string s3(",");
-                            std::stringstream ss;
-                            ss << s1 << linha1 << s3 << coluna1 << s2 << s3 << s1 << linha2 << s3 << coluna2 << s2;
-                            std::string resposta = ss.str();
-                            return resposta;
-                        }
+                    if (tabuleiro[linha2][coluna2] == 1 && linha2 != linha2 && coluna2 != coluna2 && coluna2 < 8) {
+                        std::string s1("(");
+                        std::string s2(")");
+                        std::string s3(",");
+                        std::stringstream ss;
+                        ss << s1 << linha1 << s3 << coluna1 << s2 << s3 << s1 << linha2 << s3 << coluna2 << s2;
+                        std::string resposta = ss.str();
+                        return resposta;
                     }
+                    coluna2++;
                 }
-                //acima
-                 for (int linha2 = linha1; linha2 < 8; linha2--) {
-                    for (int coluna2 = coluna1; coluna2 < 8; coluna2--) {
-                        if (tabuleiro[linha2][coluna2] == 1 && linha1 != linha2 && coluna1 != coluna2 ) {
-                            std::string s1("(");
-                            std::string s2(")");
-                            std::string s3(",");
-                            std::stringstream ss;
-                            ss << s1 << linha1 << s3 << coluna1 << s2 << s3 << s1 << linha2 << s3 << coluna2 << s2;
-                            std::string resposta = ss.str();
-                            return resposta;
-                        }
-                    }
-                }
-
-                
-                
+                // abaixo
+                // for (int linha2 = linha1, int coluna2 = coluna1; linha2 < 8 && coluna2 < 8; linha2++, coluna2++) {
+                //     if (tabuleiro[linha2][coluna2] == 1 && linha2 != linha2 && coluna2 != coluna2 ) {
+                //         std::string s1("(");
+                //         std::string s2(")");
+                //         std::string s3(",");
+                //         std::stringstream ss;
+                //         ss << s1 << linha1 << s3 << coluna1 << s2 << s3 << s1 << linha2 << s3 << coluna2 << s2;
+                //         std::string resposta = ss.str();
+                //         return resposta;
+                //     }
+                // }
             }
         }
     }
@@ -104,7 +99,7 @@ int checa_rainha(std:: string nomeDoArquivo) {
     std::string conteudo = readFile(nomeDoArquivo);
 
     if (conteudo == "Erro") {
-        return -1;    
+        return -1;
     }
 
     int countChar = 0;
@@ -121,16 +116,15 @@ int checa_rainha(std:: string nomeDoArquivo) {
 
     std::cout << "\nVector elements are: " << std::endl;
     for (unsigned int i = 0; i < 8; i++) {
-            std::string line = ""; 
+            std::string line = "";
         for (unsigned int j = 0; j < 8; j++) {
             if (tabuleiro.at(i).at(j) == 1) {
                 line += "1";
-            } 
+            }
             if (tabuleiro.at(i).at(j) == 0) {
                 line += "0";
             }
-            if ( j == 7) {
-
+            if (j == 7) {
                 std::cout << line << std::endl;
             }
     }}
@@ -146,10 +140,9 @@ int checa_rainha(std:: string nomeDoArquivo) {
 
     return -1;
 }
-
 // int main() {
 //     checa_rainha("teste_8_rainhas.txt");
 // }
-int main() {
-    checa_rainha("errocoluna.txt");
-}
+// int main() {
+//     checa_rainha("errocoluna.txt");
+// }
