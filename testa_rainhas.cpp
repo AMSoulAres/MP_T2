@@ -4,7 +4,7 @@
 #include "./catch.hpp"
 #include "./rainhas.hpp"
 
-TEST_CASE("Teste leitura de arquivo", "[rainhas]") {
+TEST_CASE("Teste principal", "[rainhas]") {
     REQUIRE(checa_rainha("teste_8_rainhas.txt") == 1);
 }
 
@@ -20,26 +20,18 @@ TEST_CASE("Teste verifica 8 linhas", "[rainhas]") {
     REQUIRE(checa_rainha("erro8linhas.txt") == -1);
 }
 
-TEST_CASE("Teste verifica se ocorre ataque na linha (Sucesso)", "[rainhas]") {
-    REQUIRE(checa_rainha("teste_8_rainhas.txt") == 1);
-}
-
 TEST_CASE("Teste verifica se ocorre ataque na linha (Falha)", "[rainhas]") {
     REQUIRE(checa_rainha("errolinha.txt") == 0);
-}
-
-TEST_CASE("Teste verifica se ocorre ataque na coluna (Sucesso)", "[rainhas]") {
-    REQUIRE(checa_rainha("teste_8_rainhas.txt") == 1);
 }
 
 TEST_CASE("Teste verifica se ocorre ataque na coluna (Falha)", "[rainhas]") {
     REQUIRE(checa_rainha("errocoluna.txt") == 0);
 }
 
-TEST_CASE("Teste verifica se ocorre ataque na diagonal principal (Sucesso)", "[rainhas]") {
-    REQUIRE(checa_rainha("teste_8_rainhas.txt") == 1);
+TEST_CASE("Teste verifica se ocorre ataque na diagonal principal (Falha)", "[rainhas]") {
+    REQUIRE(checa_rainha("erroDiagonalPrincipal.txt") == 0);
 }
 
-TEST_CASE("Teste verifica se ocorre ataque na diagonal principal (Falha)", "[rainhas]") {
+TEST_CASE("Teste verifica se ocorre ataque na diagonal secundária (Falha)", "[rainhas]") {
     REQUIRE(checa_rainha("erroDiagonalPrincipal.txt") == 0);
 }
