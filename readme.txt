@@ -1,4 +1,8 @@
-Se rodar no windows se utilizar termianl Bash para rodar sem erros
+Se rodar no windows, utilizar termianl Bash para rodar sem erros.
+
+Documentação doxygen presente no diretório /html.
+
+Repositório gitHub "https://github.com/AMSoulAres/MP_T2".
 
 O arquivo teste_8rainhas.txt é o principal e não contém erros de ataque.
 Os arquvos .txt nomeados com erro, são os arquivos base para testar casos de falha.
