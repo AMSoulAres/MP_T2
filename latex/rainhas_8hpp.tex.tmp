@@ -1,0 +1,128 @@
+\hypertarget{rainhas_8hpp}{}\doxysection{rainhas.\+hpp File Reference}
+\label{rainhas_8hpp}\index{rainhas.hpp@{rainhas.hpp}}
+
+
+Funções para leitura e escrita de arquivos, e verificação de ataques.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for rainhas.\+hpp\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{rainhas_8hpp_ab258248e0ec5c328881af14a8cff6741}{read\+File}} (std\+::string filename)
+\begin{DoxyCompactList}\small\item\em Lê o conteúdo de um arquivo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rainhas_8hpp_a3b70d95bb608a6efa3a7b52c054ae86c}{write\+File}} (std\+::string resposta, std\+::string tipo\+Ataque, std\+::string nome\+Arquivo)
+\begin{DoxyCompactList}\small\item\em Escreve uma resposta em um arquivo, juntamente com o tipo de ataque. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{rainhas_8hpp_a68da7c140a4159a0158c1e9c21d62792}{checa\+\_\+ataque}} (std\+::vector$<$ std\+::vector$<$ int $>$$>$ tabuleiro, std\+::string nome\+Arquivo)
+\begin{DoxyCompactList}\small\item\em Verifica se há algum ataque em um tabuleiro de xadrez representado como uma matriz de inteiros. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rainhas_8hpp_a0d48690c1a9eeebf841c4bba35b592fb}{checa\+\_\+rainha}} (std\+::string nome\+Do\+Arquivo)
+\begin{DoxyCompactList}\small\item\em Função principal que verifica se a entrada é uma solução. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Funções para leitura e escrita de arquivos, e verificação de ataques. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{rainhas_8hpp_a68da7c140a4159a0158c1e9c21d62792}\label{rainhas_8hpp_a68da7c140a4159a0158c1e9c21d62792}} 
+\index{rainhas.hpp@{rainhas.hpp}!checa\_ataque@{checa\_ataque}}
+\index{checa\_ataque@{checa\_ataque}!rainhas.hpp@{rainhas.hpp}}
+\doxysubsubsection{\texorpdfstring{checa\_ataque()}{checa\_ataque()}}
+{\footnotesize\ttfamily std\+::string checa\+\_\+ataque (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ int $>$$>$}]{tabuleiro,  }\item[{std\+::string}]{nome\+Arquivo }\end{DoxyParamCaption})}
+
+
+
+Verifica se há algum ataque em um tabuleiro de xadrez representado como uma matriz de inteiros. 
+
+
+\begin{DoxyItemize}
+\item Assertiva de entrada\+: as assertivas de entrada consistem dos parâmetros a seguir\+: 
+\begin{DoxyParams}{Parameters}
+{\em tabuleiro} & O tabuleiro de xadrez representado como uma matriz de inteiros. \\
+\hline
+{\em nome\+Arquivo} & Nome do arquivo lido.\\
+\hline
+\end{DoxyParams}
+
+\item Assertiva de saída\+: Essa função faz todas as verificações de ataque para cada rainha posicionada. Verificando ataques em linha, coluna e suas diagonais. Caso ocorra um ataque, a função write\+File é chamada e são passados o tipo de ataque, posições do ataque e o nome do arquivo para ela. Além disso, a função retorna uma string com as posições de ataque. Caso não ocorra nenhum ataque, retorna uma string com \char`\"{}sucesso\char`\"{}. \begin{DoxyReturn}{Returns}
+Uma string indicando as posições de ataque. 
+
+Uma string indicando \char`\"{}sucesso\char`\"{}. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\mbox{\Hypertarget{rainhas_8hpp_a0d48690c1a9eeebf841c4bba35b592fb}\label{rainhas_8hpp_a0d48690c1a9eeebf841c4bba35b592fb}} 
+\index{rainhas.hpp@{rainhas.hpp}!checa\_rainha@{checa\_rainha}}
+\index{checa\_rainha@{checa\_rainha}!rainhas.hpp@{rainhas.hpp}}
+\doxysubsubsection{\texorpdfstring{checa\_rainha()}{checa\_rainha()}}
+{\footnotesize\ttfamily int checa\+\_\+rainha (\begin{DoxyParamCaption}\item[{std\+::string}]{nome\+Do\+Arquivo }\end{DoxyParamCaption})}
+
+
+
+Função principal que verifica se a entrada é uma solução. 
+
+
+\begin{DoxyItemize}
+\item Assertiva de entrada\+: a assertiva de entrada consiste do parâmetro a seguir\+: 
+\begin{DoxyParams}{Parameters}
+{\em nome\+Do\+Arquivo} & O nome do arquivo que contém o tabuleiro de xadrez. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+O número -\/1 indicando falha na leitura. 
+
+O número 0 indicando que a entrada não é uma solução. 
+
+O número 1 indicando que a entrada é uma solução.
+\end{DoxyReturn}
+
+\item Assertiva de saída\+: A função chama read\+File para ler o arquivo, se receber \char`\"{}\+Erro\char`\"{}, retorna -\/1. Se não receber o erro continua o processamento e salva o conteúdo em uma matriz representando o tabuleiro. Após isso chama a função checa\+\_\+ataque, se houver um ataque, retorna 0 e, se não houver, retorna -\/1 
+\end{DoxyItemize}\mbox{\Hypertarget{rainhas_8hpp_ab258248e0ec5c328881af14a8cff6741}\label{rainhas_8hpp_ab258248e0ec5c328881af14a8cff6741}} 
+\index{rainhas.hpp@{rainhas.hpp}!readFile@{readFile}}
+\index{readFile@{readFile}!rainhas.hpp@{rainhas.hpp}}
+\doxysubsubsection{\texorpdfstring{readFile()}{readFile()}}
+{\footnotesize\ttfamily std\+::string read\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+
+
+
+Lê o conteúdo de um arquivo. 
+
+
+\begin{DoxyItemize}
+\item Assertiva de entrada\+: as assertivas de entrada consiste do parâmetro a seguir\+: 
+\begin{DoxyParams}{Parameters}
+{\em filename} & O nome do arquivo a ser lido. Assertiva de saída\+: A função lê o conteúdo de um arquivo, se este for válido retorna seu conteúdo como uma string. Caso contrário, retorna \char`\"{}\+Erro\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+O conteúdo do arquivo como uma string ou \char`\"{}\+Erro\char`\"{}. 
+
+Uma string com \char`\"{}\+Erro\char`\"{}. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\mbox{\Hypertarget{rainhas_8hpp_a3b70d95bb608a6efa3a7b52c054ae86c}\label{rainhas_8hpp_a3b70d95bb608a6efa3a7b52c054ae86c}} 
+\index{rainhas.hpp@{rainhas.hpp}!writeFile@{writeFile}}
+\index{writeFile@{writeFile}!rainhas.hpp@{rainhas.hpp}}
+\doxysubsubsection{\texorpdfstring{writeFile()}{writeFile()}}
+{\footnotesize\ttfamily void write\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{resposta,  }\item[{std\+::string}]{tipo\+Ataque,  }\item[{std\+::string}]{nome\+Arquivo }\end{DoxyParamCaption})}
+
+
+
+Escreve uma resposta em um arquivo, juntamente com o tipo de ataque. 
+
+
+\begin{DoxyItemize}
+\item Assertiva de entrada\+: as assertivas de entrada consistem dos parâmetros a seguir\+: 
+\begin{DoxyParams}{Parameters}
+{\em resposta} & A resposta a ser escrita. \\
+\hline
+{\em tipo\+Ataque} & O tipo de ataque relacionado à resposta. \\
+\hline
+{\em nome\+Arquivo} & O nome do arquivo onde a resposta será escrita.\\
+\hline
+\end{DoxyParams}
+Assertiva de saída\+: A função processa o ataque de rainha specificado e e grava em um arquivo. Os arquivos gerados são os de casos teste e o principal, que depende da entrada no arquivo teste\+\_\+8\+\_\+rainhas.\+txt. Não há retorno para essa função. 
+\end{DoxyItemize}
